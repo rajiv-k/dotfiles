@@ -1,27 +1,83 @@
-set nu
 syntax on
-colo desert
-filetype plugin indent on
-set laststatus=2
-colorscheme slate 
-set bs=2
-set sw=4 
-set sts=4
-set ts=4 
-set expandtab 
-"autocmd BufNewFile *.py setl sts=2 ts=2 sw=2 expandtab
-inoremap kj <ESC>
+colo onedark
+hi LineNr ctermfg=245
+hi Comment ctermfg=069
+set nu
+set ai
+set si
+set ts=4 sts=4 sw=4
+set expandtab
+set incsearch
+set hlsearch
+set list
+set listchars=tab:▸\ ,trail:·
+set splitright
+set nofixendofline
 
-highlight StatusLine ctermfg=gray ctermbg=black
-function! GitBranch()
-  let branch = system("git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* //'")
-  if branch != ''
-    return ' [Git: ' . substitute(branch, '\n', '', 'g').']'
-  en  
-  return ''
-endfunction
- 
-" minimal status line, only shows git branch
-"set statusline=%{GitBranch()}
-set statusline=[%n]\ %<%F\ %m\ \ \ \ [%R%H%W%Y][%{&ff}]\ \ %=\ line:%l/%L\ col:%-2c\ \ \ %3p%%\ \ \ @%{strftime(\"%H:%M:%S\")}"")}}]]]
-"autocmd vimenter * NERDTree
+set mouse=
+set laststatus=2
+set statusline=[%n]\ %<%F\ %m\ \ \ \ [%R%H%W%Y][%{&ff}]\ [%3b\ 0x%2B]\ %=\ line:%l/%L\ col:%-2c\ \ \ %3p%%\ \ ")}}]]]
+set cursorline
+set noeol
+
+
+" disable netrw in favour of nvim-tree
+let g:loaded_netrw = 1
+let g:loaded_netrwPlugin = 1
+
+" leader mappings
+let mapleader = "\<space>"
+
+nmap <leader>f :Files<cr>
+nmap <leader>r :Rg<cr>
+nmap <leader>R :Rg<space>
+nmap <leader>h :Hexmode<cr>
+nmap <leader>; :set invlist<cr>
+nnoremap <leader><space> :NvimTreeFindFileToggle<CR>
+nnoremap <esc> :nohlsearch <CR>
+
+
+" window management
+nmap <C-h> <C-w>h
+nmap <C-j> <C-w>j
+nmap <C-k> <C-w>k
+nmap <C-l> <C-w>l
+
+" Reselect visual selction after indenting
+vnoremap < <gv
+vnoremap > >gv
+
+" Quickly escape to Normal mode
+imap jj <esc>
+
+" extensions identified as binary files
+let g:hexmode_patterns = '*.bin,*.exe,*.dat,*.o'
+
+" go autocomplete suggestions
+au filetype go inoremap <buffer> . .<C-x><C-o>
+
+" Use new vim 8.2 popup windows for Go Doc
+let g:go_doc_popup_window = 1
+
+" disable fzf preview window
+let g:fzf_vim = {}
+" let g:fzf_vim.preview_window = ['hidden,right,50%,<70(up,40%)', 'ctrl-_']
+let g:fzf_layout = { 'window': { 'width': 80, 'height': 0.4 } }
+let g:fzf_vim.preview_window = []
+
+
+" plugins
+call plug#begin()
+Plug 'fidian/hexmode'
+Plug 'junegunn/fzf', {'do': {-> fzf#install()}}
+Plug 'junegunn/fzf.vim'
+Plug 'tpope/vim-commentary'
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+Plug 'wojciechkepka/vim-github-dark'
+Plug 'tpope/vim-surround'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-tree/nvim-tree.lua'
+Plug 'nvim-telescope/telescope.nvim'
+call plug#end()
+
+lua require'nvim-tree'.setup()
