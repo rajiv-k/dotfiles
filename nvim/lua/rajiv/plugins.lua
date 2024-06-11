@@ -22,10 +22,10 @@ end
 local lazy_plugins = {
     {
         "nvim-tree/nvim-tree.lua",
-        config = get_setup("nvim-tree"),
         dependencies = {
             'nvim-tree/nvim-web-devicons'
-        }
+        },
+        config = get_setup("nvim-tree"),
     },
     { "nvim-lua/plenary.nvim" },
     {
@@ -33,12 +33,16 @@ local lazy_plugins = {
         config = get_setup("telescope")
     },
     {
-        'VonHeikemen/lsp-zero.nvim',
-        branch = 'v3.x',
-    },
-    {
         "neovim/nvim-lspconfig",
         config = get_setup("lspconfig"),
+    },
+    {
+        'VonHeikemen/lsp-zero.nvim',
+        branch = 'v3.x',
+        dependencies = {
+            "L3MON4D3/LuaSnip",
+        },
+        description = "required by lspconfig",
     },
     {
         'echasnovski/mini.nvim',
@@ -47,18 +51,19 @@ local lazy_plugins = {
     },
     {
         "hrsh7th/nvim-cmp",
-        event = { "VeryLazy" },
+        event = { "InsertEnter" },
         dependencies = {
             "hrsh7th/cmp-nvim-lsp",
             "hrsh7th/cmp-nvim-lsp-signature-help",
             "hrsh7th/cmp-buffer",
             "hrsh7th/cmp-path",
             "hrsh7th/cmp-cmdline",
-        }
+        },
+        lazy = false,
+        config = get_setup("nvim-cmp"),
     },
     {
         "nvim-treesitter/nvim-treesitter",
-        lazy = false,
         config = get_setup("nvim-treesitter")
     }
 }
