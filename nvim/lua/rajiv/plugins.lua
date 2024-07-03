@@ -65,6 +65,15 @@ local lazy_plugins = {
     {
         "nvim-treesitter/nvim-treesitter",
         config = get_setup("nvim-treesitter")
+    },
+    {
+        "nvim-treesitter/nvim-treesitter-context"
+    },
+    {
+        'nvim-lualine/lualine.nvim',
+        dependencies = { 'nvim-tree/nvim-web-devicons' },
+        lazy = false,
+        config = get_setup("lualine")
     }
 }
 

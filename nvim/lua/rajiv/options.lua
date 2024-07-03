@@ -19,6 +19,7 @@ opt.softtabstop = 4
 opt.tabstop = 4
 opt.splitright = true
 opt.laststatus = 2
+opt.showmode = false
 
 -- vim.o.statusline = [[%<%f %h%m%r %y%=%{v:register} %-14.(%l,%c%V%) %P]]
 vim.o.statusline = [[[%n] %<%F %m    [%R%H%W%Y][%{&ff}] [ascii:%3b hex:0x%2B] %= line:%l/%L col:%-2c   %3p%%  ]]

@@ -34,5 +34,6 @@ cmp.setup.cmdline(':', {
         { name = 'cmdline' }
     }),
     matching = { disallow_symbol_nonprefix_matching = false }
+
 })
 
