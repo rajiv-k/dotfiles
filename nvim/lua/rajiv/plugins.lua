@@ -74,6 +74,14 @@ local lazy_plugins = {
         dependencies = { 'nvim-tree/nvim-web-devicons' },
         lazy = false,
         config = get_setup("lualine")
+    },
+    { 'echasnovski/mini.nvim', version = '*' },
+    {
+        "ray-x/go.nvim",
+        config = get_setup('go'),
+        event = {"CmdlineEnter"},
+        ft = {"go", 'gomod'}
+        -- build = ':lua require("go.install").update_all_sync()' -- if you need to install/update all binaries
     }
 }
 

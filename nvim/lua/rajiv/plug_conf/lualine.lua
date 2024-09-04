@@ -22,9 +22,6 @@ require('lualine').setup {
     lualine_b = {'branch', 'diff', 'diagnostics'},
     lualine_c = {
         {
-            'filetype',
-        },
-        {
             'filename',
             path=1,
             file_status = true,
@@ -33,7 +30,7 @@ require('lualine').setup {
             }
         }
     },
-    lualine_x = {'Hex: 0x%3b', 'encoding', 'fileformat'},
+    lualine_x = {'%3b', 'filetype', 'encoding', 'fileformat'},
     lualine_y = {'progress'},
     lualine_z = {'location'}
   },
