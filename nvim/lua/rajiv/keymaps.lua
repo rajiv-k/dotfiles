@@ -19,3 +19,17 @@ vim.keymap.set("n", "gd", vim.lsp.buf.definition)
 vim.keymap.set("n", "gI", vim.lsp.buf.implementation)
 vim.keymap.set("n", "<leader>s", builtin.lsp_document_symbols)
 vim.keymap.set("n", "K", vim.lsp.buf.hover)
+
+
+-- ToggleQuickfix
+function ToggleQuickfix()
+  for _, win in ipairs(vim.fn.getwininfo()) do
+    if win.quickfix == 1 then
+      vim.cmd('cclose')
+      return
+    end
+  end
+  vim.cmd('copen')
+end
+
+vim.keymap.set('n', '<leader>q', ToggleQuickfix, { silent = true })
