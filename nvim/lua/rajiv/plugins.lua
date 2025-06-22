@@ -81,8 +81,20 @@ local lazy_plugins = {
         config = get_setup('go'),
         event = {"CmdlineEnter"},
         ft = {"go", 'gomod'}
-        -- build = ':lua require("go.install").update_all_sync()' -- if you need to install/update all binaries
-    }
+    },
+	{
+	  "navarasu/onedark.nvim",
+	  priority = 1000,
+	  config = function()
+	    require('onedark').setup {
+	      style = 'darker',
+          code_style = {
+            comments = 'none',
+          }
+	    }
+	    require('onedark').load()
+	  end
+	}
 }
 
 local opts = {}

@@ -26,6 +26,7 @@ vim.o.statusline = [[[%n] %<%F %m    [%R%H%W%Y][%{&ff}] [ascii:%3b hex:0x%2B] %=
 
 vim.cmd.colorscheme("onedark")
 vim.api.nvim_set_hl(0, 'Comment', {fg = "SkyBlue"})
+vim.api.nvim_set_hl(0, '@comment', {fg = "SkyBlue"})
 
 vim.wo.number = true
 vim.g.mapleader = " "
