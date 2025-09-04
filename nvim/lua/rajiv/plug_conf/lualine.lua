@@ -30,7 +30,7 @@ require('lualine').setup {
             }
         }
     },
-    lualine_x = {'%3b', 'filetype', 'encoding', 'fileformat'},
+    lualine_x = {'lsp_status', '%3b', 'filetype', 'encoding', 'fileformat'},
     lualine_y = {'progress'},
     lualine_z = {'location'}
   },
