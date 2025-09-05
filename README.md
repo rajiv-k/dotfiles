@@ -9,5 +9,5 @@ $ cp -r ./nvim ${HOME}/.config/
 ```
 
 ```
-$ brew bundle install --file ./Brefile
+$ brew bundle install --file ./Brewfile
 ```
